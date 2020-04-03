@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bftest.mapper.BfAnswerMapper">
+  <resultMap id="BaseResultMap" type="com.example.bftest.pojo.BfAnswer">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="question_id" jdbcType="BIGINT" property="questionId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_answer" jdbcType="VARCHAR" property="userAnswer" />
+    <result column="has_check" jdbcType="VARCHAR" property="hasCheck" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="test_id" jdbcType="BIGINT" property="testId" />
+    <result column="grades" jdbcType="INTEGER" property="grades" />
+  </resultMap>
+</mapper>
