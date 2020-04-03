@@ -30,6 +30,10 @@ public class FileExcelUploadHandlerImpl implements FileExcelUploadHandler {
     @Override
     public List<BfUser> getUserPojo(MultipartFile file, Short type) {
         List<UserInfoBo> excelToDb = ExcelUserIfnoToDBUtils.getExcelToDb(file);
+        log.info("first-{}",JsonUtils.objectToJson(excelToDb.get(0)));
+        if (excelToDb.get(0).getChinese()==null){
+            throw new RuntimeException("上传文件格式有问题");
+        }
         log.info("excelToDb-{}", JsonUtils.objectToJson(excelToDb));
         List<UserInfoBo> collect = excelToDb.stream().filter(t -> !t.getChinese().equals(BfTestConstants.CHINESE_NAME)).collect(Collectors.toList());
         List<BfUser> list=collect.stream()
@@ -42,6 +46,10 @@ public class FileExcelUploadHandlerImpl implements FileExcelUploadHandler {
     @Override
     public List<BfQuestion> getBfQuestion(MultipartFile file, Long teacherId) {
         List<TestInfoBo> excelToDb = ExcelTestIfnoToDBUtils.getExcelToDb(file);
+        log.info("first-{}",JsonUtils.objectToJson(excelToDb.get(0)));
+        if(excelToDb.get(0).getQuestion()==null){
+            throw new RuntimeException("上传文件格式有问题");
+        }
         List<TestInfoBo> testInfoList = excelToDb.stream().filter(t -> !t.getQuestion().equals(BfTestConstants.QUESTION)).collect(Collectors.toList());
         List<BfQuestion> collect = testInfoList.stream().map(t -> new BfQuestion(t.getQuestion(), teacherId, t.getCode()))
                 .collect(Collectors.toList());
