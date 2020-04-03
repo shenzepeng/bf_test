@@ -1,6 +1,6 @@
 package com.example.bftest.controller;
 
-import com.example.bftest.common.SzpJsonResult;
+import com.example.bftest.common.mbpJsonResult;
 import com.example.bftest.request.FindNeedWatcherQuestionRequest;
 import com.example.bftest.request.SearchQuestionRequest;
 import com.example.bftest.request.UpdateQuestionByTeacherRequest;
@@ -18,9 +18,9 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 18:37
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 @RestController
 @RequestMapping("teacher")
@@ -33,8 +33,8 @@ public class TeacherController {
      */
     @ApiOperation("所有需要批改的题目")
     @PostMapping("all/question")
-    public SzpJsonResult<FindNeedWatcherQuestionResponse> getAllQuestion(@RequestBody @Valid FindNeedWatcherQuestionRequest request){
-        return SzpJsonResult.ok(teacherService.findNeedWatcher(request));
+    public mbpJsonResult<FindNeedWatcherQuestionResponse> getAllQuestion(@RequestBody @Valid FindNeedWatcherQuestionRequest request){
+        return mbpJsonResult.ok(teacherService.findNeedWatcher(request));
     }
 
     /**
@@ -44,15 +44,15 @@ public class TeacherController {
      */
     @ApiOperation("模糊搜索题目")
     @PostMapping("search")
-    public SzpJsonResult<SearchQuestionResponse> findAllTest(@RequestBody @Valid SearchQuestionRequest request){
-        return SzpJsonResult.ok(teacherService.searchQuestionQuestion(request));
+    public mbpJsonResult<SearchQuestionResponse> findAllTest(@RequestBody @Valid SearchQuestionRequest request){
+        return mbpJsonResult.ok(teacherService.searchQuestionQuestion(request));
     }
     /**
      * 修改题目
      */
     @ApiOperation("老师修改上传之后的题目")
     @PostMapping("update/question")
-    public SzpJsonResult<IntegerResultResponse> updateQuestion(@RequestBody @Valid UpdateQuestionInfoRequest request){
-        return SzpJsonResult.ok(teacherService.updateQuestionInfoByTeacher(request));
+    public mbpJsonResult<IntegerResultResponse> updateQuestion(@RequestBody @Valid UpdateQuestionInfoRequest request){
+        return mbpJsonResult.ok(teacherService.updateQuestionInfoByTeacher(request));
     }
 }

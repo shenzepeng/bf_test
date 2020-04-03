@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2019-09-07 14:37
  * @Description: 去除换行符
  */

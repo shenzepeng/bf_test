@@ -9,9 +9,9 @@ import com.google.gson.GsonBuilder;
 import java.util.List;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2019/10/29 13:42
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 public class JsonUtils {
     // 定义jackson对象

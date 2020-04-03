@@ -1,6 +1,6 @@
 package com.example.bftest.controller;
 
-import com.example.bftest.common.SzpJsonResult;
+import com.example.bftest.common.mbpJsonResult;
 import com.example.bftest.dto.StudentGradeDto;
 import com.example.bftest.pojo.BfAnswer;
 import com.example.bftest.response.GetAllFinishResponse;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 22:56
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 @RestController
 @RequestMapping("student")
@@ -32,8 +32,8 @@ public class StudentController {
      */
     @ApiOperation("获取所有做过题的列表")
     @GetMapping("all/test")
-    public SzpJsonResult<GetAllFinishResponse> getAllTest(Long userId){
-        return SzpJsonResult.ok(studentService.getList(userId));
+    public mbpJsonResult<GetAllFinishResponse> getAllTest(Long userId){
+        return mbpJsonResult.ok(studentService.getList(userId));
     }
 
     /**
@@ -43,7 +43,7 @@ public class StudentController {
      */
     @ApiOperation("获取本次考试的所有题目")
     @GetMapping("test/info")
-    public SzpJsonResult<GetThisExamResponse> getInfoByTestId(Long testId){
-        return SzpJsonResult.ok(studentService.findAnswerByTestId(testId));
+    public mbpJsonResult<GetThisExamResponse> getInfoByTestId(Long testId){
+        return mbpJsonResult.ok(studentService.findAnswerByTestId(testId));
     }
 }

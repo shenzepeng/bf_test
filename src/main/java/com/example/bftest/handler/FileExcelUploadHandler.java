@@ -7,9 +7,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 16:53
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 
 public interface FileExcelUploadHandler {

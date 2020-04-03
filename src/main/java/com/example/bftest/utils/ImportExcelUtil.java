@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2019-09-04 13:06
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 public class ImportExcelUtil {
     private final static String excel2003L =".xls";    //2003- 版本的excel

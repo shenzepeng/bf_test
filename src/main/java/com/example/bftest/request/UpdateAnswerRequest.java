@@ -10,9 +10,9 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 18:19
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 @Data
 public class UpdateAnswerRequest {

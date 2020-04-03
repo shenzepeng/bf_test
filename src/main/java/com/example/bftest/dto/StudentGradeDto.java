@@ -3,9 +3,9 @@ package com.example.bftest.dto;
 import lombok.Data;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 23:00
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 @Data
 public class StudentGradeDto {

@@ -1,9 +1,9 @@
 package com.example.bftest.constants;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 17:59
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 public class BfTestConstants {
     public static final Short TEACHER_TYPE=1;

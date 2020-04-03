@@ -1,6 +1,6 @@
 package com.example.bftest.controller;
 
-import com.example.bftest.common.SzpJsonResult;
+import com.example.bftest.common.mbpJsonResult;
 import com.example.bftest.constants.BfTestConstants;
 import com.example.bftest.handler.FileExcelUploadHandler;
 import com.example.bftest.pojo.BfQuestion;
@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.logging.Handler;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 12:57
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 @RestController
 @RequestMapping("upload")
@@ -37,9 +37,9 @@ public class UploadController {
      */
     @ApiOperation("上传考试题目")
     @PostMapping("question")
-    public SzpJsonResult<IntegerResultResponse> uploadQuestion(MultipartFile file, Long teacherId) {
+    public mbpJsonResult<IntegerResultResponse> uploadQuestion(MultipartFile file, Long teacherId) {
         List<BfQuestion> bfQuestion = fileExcelUploadHandler.getBfQuestion(file, teacherId);
-        return SzpJsonResult.ok(questionService.addQuestionByFileList(bfQuestion));
+        return mbpJsonResult.ok(questionService.addQuestionByFileList(bfQuestion));
     }
 
     /**
@@ -47,9 +47,9 @@ public class UploadController {
      */
     @ApiOperation("上传老师名单")
     @PostMapping("teacher/list")
-    public SzpJsonResult<IntegerResultResponse> uploadTeacherList(MultipartFile file) {
+    public mbpJsonResult<IntegerResultResponse> uploadTeacherList(MultipartFile file) {
         List<BfUser> userPojo = fileExcelUploadHandler.getUserPojo(file, BfTestConstants.TEACHER_TYPE);
-        return SzpJsonResult.ok(userService.addUserList(userPojo));
+        return mbpJsonResult.ok(userService.addUserList(userPojo));
     }
 
     /**
@@ -57,8 +57,8 @@ public class UploadController {
      */
     @ApiOperation("上传学生名单")
     @PostMapping("children/list")
-    public SzpJsonResult<IntegerResultResponse> uploadChildrenList(MultipartFile file) {
+    public mbpJsonResult<IntegerResultResponse> uploadChildrenList(MultipartFile file) {
         List<BfUser> userPojo = fileExcelUploadHandler.getUserPojo(file, BfTestConstants.STUDENT_TYPE);
-        return SzpJsonResult.ok(userService.addUserList(userPojo));
+        return mbpJsonResult.ok(userService.addUserList(userPojo));
     }
 }

@@ -3,9 +3,9 @@ package com.example.bftest.bo;
 import lombok.Data;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 13:46
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 @Data
 public class UserInfoBo {

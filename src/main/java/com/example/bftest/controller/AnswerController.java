@@ -1,6 +1,6 @@
 package com.example.bftest.controller;
 
-import com.example.bftest.common.SzpJsonResult;
+import com.example.bftest.common.mbpJsonResult;
 import com.example.bftest.request.UpdateAnswerRequest;
 import com.example.bftest.response.IntegerResultResponse;
 import com.example.bftest.service.AnswerService;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 12:58
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 @RestController
 @RequestMapping("answer")
@@ -25,8 +25,8 @@ public class AnswerController {
      */
     @ApiOperation("用于答题或者批改")
     @PostMapping("answer")
-    public SzpJsonResult<IntegerResultResponse> answer(@RequestBody @Valid UpdateAnswerRequest request){
-        return SzpJsonResult.ok(answerService.updateAnswer(request));
+    public mbpJsonResult<IntegerResultResponse> answer(@RequestBody @Valid UpdateAnswerRequest request){
+        return mbpJsonResult.ok(answerService.updateAnswer(request));
     }
 
 

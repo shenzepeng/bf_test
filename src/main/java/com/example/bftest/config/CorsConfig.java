@@ -6,9 +6,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/2 11:00
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 @Configuration
 public class CorsConfig {

@@ -7,9 +7,9 @@ import com.example.bftest.response.IntegerResultResponse;
 import java.util.List;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 15:14
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 public interface AnswerService {
     IntegerResultResponse addAnswer(BfAnswer bfAnswer);

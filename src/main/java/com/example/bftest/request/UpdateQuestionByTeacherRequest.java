@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/2 22:46
  * @Description: 老师想更新上传的过后的题目
  *

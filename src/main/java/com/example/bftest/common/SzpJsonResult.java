@@ -1,11 +1,11 @@
 package com.example.bftest.common;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 12:56
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
-public class SzpJsonResult<T> {
+public class mbpJsonResult<T> {
     // 响应业务状态
     private Integer status;
 
@@ -18,45 +18,45 @@ public class SzpJsonResult<T> {
     private String ok; // 不使用
 
 
-    public static SzpJsonResult build(Integer status, String msg, Object data) {
-        return new SzpJsonResult(status, msg, data);
+    public static mbpJsonResult build(Integer status, String msg, Object data) {
+        return new mbpJsonResult(status, msg, data);
     }
 
-    public static SzpJsonResult ok(Object data) {
-        return new SzpJsonResult(data);
+    public static mbpJsonResult ok(Object data) {
+        return new mbpJsonResult(data);
     }
 
-    public static SzpJsonResult ok() {
-        return new SzpJsonResult(null);
+    public static mbpJsonResult ok() {
+        return new mbpJsonResult(null);
     }
 
-    public static SzpJsonResult errorMsg(String msg) {
-        return new SzpJsonResult(500, msg, null);
+    public static mbpJsonResult errorMsg(String msg) {
+        return new mbpJsonResult(500, msg, null);
     }
 
-    public static SzpJsonResult errorMap(Object data) {
-        return new SzpJsonResult(501, "error", data);
+    public static mbpJsonResult errorMap(Object data) {
+        return new mbpJsonResult(501, "error", data);
     }
 
-    public static SzpJsonResult errorTokenMsg(String msg) {
-        return new SzpJsonResult(502, msg, null);
+    public static mbpJsonResult errorTokenMsg(String msg) {
+        return new mbpJsonResult(502, msg, null);
     }
 
-    public static SzpJsonResult errorException(String msg) {
-        return new SzpJsonResult(555, msg, null);
+    public static mbpJsonResult errorException(String msg) {
+        return new mbpJsonResult(555, msg, null);
     }
 
-    public SzpJsonResult() {
+    public mbpJsonResult() {
 
     }
 
-    public SzpJsonResult(Integer status, String msg, Object data) {
+    public mbpJsonResult(Integer status, String msg, Object data) {
         this.status = status;
         this.msg = msg;
         this.data = data;
     }
 
-    public SzpJsonResult(Object data) {
+    public mbpJsonResult(Object data) {
         this.status = 200;
         this.msg = "OK";
         this.data = data;

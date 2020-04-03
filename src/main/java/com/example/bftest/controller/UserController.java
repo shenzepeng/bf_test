@@ -1,6 +1,6 @@
 package com.example.bftest.controller;
 
-import com.example.bftest.common.SzpJsonResult;
+import com.example.bftest.common.mbpJsonResult;
 import com.example.bftest.request.LoginRequest;
 import com.example.bftest.request.UpdateUserInfoRequest;
 import com.example.bftest.response.IntegerResultResponse;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
- * @Auther: szp
+ * @Auther: mbp
  * @Date: 2020/4/1 12:56
- * @Description: 沈泽鹏写点注释吧
+ * @Description: 写点注释
  */
 @RestController
 @RequestMapping("user")
@@ -28,16 +28,16 @@ public class UserController {
      */
     @ApiOperation("登录,username账号，password密码")
     @PostMapping("login")
-    public SzpJsonResult<LoginUserInfoResponse> login(@RequestBody  LoginRequest request){
-        return SzpJsonResult.ok(userService.login(request.getUsername(), request.getPassword()));
+    public mbpJsonResult<LoginUserInfoResponse> login(@RequestBody  LoginRequest request){
+        return mbpJsonResult.ok(userService.login(request.getUsername(), request.getPassword()));
     }
     /**
      * 修改
      */
     @ApiOperation("修改,number是工号或者学校，id是userId，必串")
     @PutMapping("put/msg")
-    public SzpJsonResult<IntegerResultResponse> updateInfo(@RequestBody  UpdateUserInfoRequest updateUserInfoRequest){
-        return SzpJsonResult.ok(userService.updateUserInfo(updateUserInfoRequest));
+    public mbpJsonResult<IntegerResultResponse> updateInfo(@RequestBody  UpdateUserInfoRequest updateUserInfoRequest){
+        return mbpJsonResult.ok(userService.updateUserInfo(updateUserInfoRequest));
     }
 
 }
