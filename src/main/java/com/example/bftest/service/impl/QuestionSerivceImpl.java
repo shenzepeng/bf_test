@@ -1,6 +1,7 @@
 package com.example.bftest.service.impl;
 
 import com.example.bftest.dao.QuestionDao;
+import com.example.bftest.mapper.BfQuestionMapper;
 import com.example.bftest.pojo.BfQuestion;
 import com.example.bftest.request.AddQuestionRequest;
 import com.example.bftest.request.UpdateQuestionRequest;
@@ -24,7 +25,8 @@ import java.util.List;
 public class QuestionSerivceImpl implements QuestionService {
     @Autowired
     private QuestionDao questionDao;
-
+    @Autowired
+    private BfQuestionMapper mapper;
 
     @Override
     public Integer addQuestion(AddQuestionRequest request) {
@@ -56,8 +58,8 @@ public class QuestionSerivceImpl implements QuestionService {
         for (BfQuestion bfQuestion : list) {
             bfQuestion.setUpdateTime(new Date());
             bfQuestion.setCreateTime(new Date());
-            questionDao.addQuestion(bfQuestion);
         }
-        return 1;
+        //mapper.insertList(list);
+        return mapper.insertList(list);
     }
 }

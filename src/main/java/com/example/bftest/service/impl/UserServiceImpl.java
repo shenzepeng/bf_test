@@ -2,6 +2,7 @@ package com.example.bftest.service.impl;
 
 import com.alibaba.druid.support.json.JSONUtils;
 import com.example.bftest.dao.UserDao;
+import com.example.bftest.mapper.BfUserMapper;
 import com.example.bftest.pojo.BfUser;
 import com.example.bftest.request.UpdateUserInfoRequest;
 import com.example.bftest.response.FindAllUserResponse;
@@ -14,6 +15,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Date;
 import java.util.List;
@@ -29,7 +31,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-
+@Autowired
+private BfUserMapper bfUserMapper;
     @Override
     public LoginUserInfoResponse login(String username, String password) {
         LoginUserInfoResponse response=new LoginUserInfoResponse();
@@ -66,13 +69,11 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("上传名单有问题，文件为空，或者文件中没有内容");
         }
         for (BfUser bfUser : bfUsers) {
-            bfUser.setUpdateTime(new Date());
-            bfUser.setCreateTime(new Date());
-            userDao.addUser(bfUser);
+           bfUser.setUpdateTime(new Date());
+           bfUser.setCreateTime(new Date());
         }
-
         IntegerResultResponse resultResponse=new IntegerResultResponse();
-        resultResponse.setResult(1);
+        resultResponse.setResult(bfUserMapper.insertList(bfUsers));
         return resultResponse;
     }
 
