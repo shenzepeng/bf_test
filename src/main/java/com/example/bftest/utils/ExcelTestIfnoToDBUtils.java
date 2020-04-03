@@ -53,6 +53,7 @@ public class ExcelTestIfnoToDBUtils {
             cell1 = cellList.get(1);
         }catch (Exception e){
             log.info("该信息没有相关内容----{}",e.getMessage());
+            throw new RuntimeException("该信息没有相关内容"+ e.getMessage());
         }
 
         if (cell!=null){

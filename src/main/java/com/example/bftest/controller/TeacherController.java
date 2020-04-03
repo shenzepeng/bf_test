@@ -1,6 +1,6 @@
 package com.example.bftest.controller;
 
-import com.example.bftest.common.mbpJsonResult;
+import com.example.bftest.common.SzpJsonResult;
 import com.example.bftest.request.FindNeedWatcherQuestionRequest;
 import com.example.bftest.request.SearchQuestionRequest;
 import com.example.bftest.request.UpdateQuestionByTeacherRequest;
@@ -33,8 +33,8 @@ public class TeacherController {
      */
     @ApiOperation("所有需要批改的题目")
     @PostMapping("all/question")
-    public mbpJsonResult<FindNeedWatcherQuestionResponse> getAllQuestion(@RequestBody @Valid FindNeedWatcherQuestionRequest request){
-        return mbpJsonResult.ok(teacherService.findNeedWatcher(request));
+    public SzpJsonResult<FindNeedWatcherQuestionResponse> getAllQuestion(@RequestBody @Valid FindNeedWatcherQuestionRequest request){
+        return SzpJsonResult.ok(teacherService.findNeedWatcher(request));
     }
 
     /**
@@ -44,15 +44,15 @@ public class TeacherController {
      */
     @ApiOperation("模糊搜索题目")
     @PostMapping("search")
-    public mbpJsonResult<SearchQuestionResponse> findAllTest(@RequestBody @Valid SearchQuestionRequest request){
-        return mbpJsonResult.ok(teacherService.searchQuestionQuestion(request));
+    public SzpJsonResult<SearchQuestionResponse> findAllTest(@RequestBody @Valid SearchQuestionRequest request){
+        return SzpJsonResult.ok(teacherService.searchQuestionQuestion(request));
     }
     /**
      * 修改题目
      */
     @ApiOperation("老师修改上传之后的题目")
     @PostMapping("update/question")
-    public mbpJsonResult<IntegerResultResponse> updateQuestion(@RequestBody @Valid UpdateQuestionInfoRequest request){
-        return mbpJsonResult.ok(teacherService.updateQuestionInfoByTeacher(request));
+    public SzpJsonResult<IntegerResultResponse> updateQuestion(@RequestBody @Valid UpdateQuestionInfoRequest request){
+        return SzpJsonResult.ok(teacherService.updateQuestionInfoByTeacher(request));
     }
 }

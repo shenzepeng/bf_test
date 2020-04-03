@@ -56,6 +56,7 @@ public class ExcelUserIfnoToDBUtils {
             log.info("cell-{},cell1-{},cell2-{}",JsonUtils.objectToJson(cell.toString()), JsonUtils.objectToJson(cell1.toString()),JsonUtils.objectToJson(cell2.toString()));
         } catch (Exception e) {
             log.info("该信息没有相关内容----{}", e.getMessage());
+            throw new RuntimeException("该信息没有相关内容"+ e.getMessage());
         }
 
         if (cell != null) {

@@ -1,6 +1,6 @@
 package com.example.bftest.controller;
 
-import com.example.bftest.common.mbpJsonResult;
+import com.example.bftest.common.SzpJsonResult;
 import com.example.bftest.dto.StudentGradeDto;
 import com.example.bftest.response.GetAllFinishResponse;
 import com.example.bftest.response.GetQuestionListResponse;
@@ -29,7 +29,7 @@ public class TestController {
      */
     @ApiOperation("参加考试,获取试题")
     @GetMapping("get/userId")
-    public mbpJsonResult<GetAllFinishResponse> getTest(Long userId){
-        return mbpJsonResult.ok(studentService.getList(userId));
+    public SzpJsonResult<GetAllFinishResponse> getTest(Long userId){
+        return SzpJsonResult.ok(studentService.getList(userId));
     }
 }

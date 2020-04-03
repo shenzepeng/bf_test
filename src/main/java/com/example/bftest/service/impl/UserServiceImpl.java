@@ -4,6 +4,7 @@ import com.alibaba.druid.support.json.JSONUtils;
 import com.example.bftest.dao.UserDao;
 import com.example.bftest.pojo.BfUser;
 import com.example.bftest.request.UpdateUserInfoRequest;
+import com.example.bftest.response.FindAllUserResponse;
 import com.example.bftest.response.IntegerResultResponse;
 import com.example.bftest.response.LoginUserInfoResponse;
 import com.example.bftest.service.UserService;
@@ -61,14 +62,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public IntegerResultResponse addUserList(List<BfUser> bfUsers) {
+        if (CollectionUtils.isEmpty(bfUsers)){
+            throw new RuntimeException("上传名单有问题，文件为空，或者文件中没有内容");
+        }
         for (BfUser bfUser : bfUsers) {
             bfUser.setUpdateTime(new Date());
             bfUser.setCreateTime(new Date());
             userDao.addUser(bfUser);
         }
+
         IntegerResultResponse resultResponse=new IntegerResultResponse();
         resultResponse.setResult(1);
         return resultResponse;
+    }
+
+    @Override
+    public FindAllUserResponse findAll() {
+        FindAllUserResponse response=new FindAllUserResponse();
+        List<BfUser> all = userDao.findAll();
+        response.setBfUserList(all);
+        return response;
     }
 
 

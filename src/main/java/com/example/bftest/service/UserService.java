@@ -3,6 +3,7 @@ package com.example.bftest.service;
 import com.example.bftest.pojo.BfAnswer;
 import com.example.bftest.pojo.BfUser;
 import com.example.bftest.request.UpdateUserInfoRequest;
+import com.example.bftest.response.FindAllUserResponse;
 import com.example.bftest.response.IntegerResultResponse;
 import com.example.bftest.response.LoginUserInfoResponse;
 
@@ -18,4 +19,5 @@ public interface UserService {
     IntegerResultResponse updateUserInfo(UpdateUserInfoRequest bfUser);
     IntegerResultResponse addUser(BfUser bfUser);
     IntegerResultResponse addUserList(List<BfUser> bfUsers);
+    FindAllUserResponse findAll();
 }

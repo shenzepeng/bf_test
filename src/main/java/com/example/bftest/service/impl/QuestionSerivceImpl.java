@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -49,6 +50,9 @@ public class QuestionSerivceImpl implements QuestionService {
 
     @Override
     public Integer addQuestionByFileList(List<BfQuestion> list) {
+        if (CollectionUtils.isEmpty(list)){
+            throw new RuntimeException("上传题目有问题，文件为空，或者文件中没有内容");
+        }
         for (BfQuestion bfQuestion : list) {
             bfQuestion.setUpdateTime(new Date());
             bfQuestion.setCreateTime(new Date());

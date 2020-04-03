@@ -1,6 +1,6 @@
 package com.example.bftest.controller;
 
-import com.example.bftest.common.mbpJsonResult;
+import com.example.bftest.common.SzpJsonResult;
 import com.example.bftest.request.LoginRequest;
 import com.example.bftest.request.UpdateUserInfoRequest;
 import com.example.bftest.response.IntegerResultResponse;
@@ -28,16 +28,16 @@ public class UserController {
      */
     @ApiOperation("登录,username账号，password密码")
     @PostMapping("login")
-    public mbpJsonResult<LoginUserInfoResponse> login(@RequestBody  LoginRequest request){
-        return mbpJsonResult.ok(userService.login(request.getUsername(), request.getPassword()));
+    public SzpJsonResult<LoginUserInfoResponse> login(@RequestBody  LoginRequest request){
+        return SzpJsonResult.ok(userService.login(request.getUsername(), request.getPassword()));
     }
     /**
      * 修改
      */
     @ApiOperation("修改,number是工号或者学校，id是userId，必串")
     @PutMapping("put/msg")
-    public mbpJsonResult<IntegerResultResponse> updateInfo(@RequestBody  UpdateUserInfoRequest updateUserInfoRequest){
-        return mbpJsonResult.ok(userService.updateUserInfo(updateUserInfoRequest));
+    public SzpJsonResult<IntegerResultResponse> updateInfo(@RequestBody  UpdateUserInfoRequest updateUserInfoRequest){
+        return SzpJsonResult.ok(userService.updateUserInfo(updateUserInfoRequest));
     }
 
 }
