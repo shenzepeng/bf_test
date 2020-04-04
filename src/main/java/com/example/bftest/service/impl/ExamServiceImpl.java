@@ -4,6 +4,7 @@ import com.example.bftest.constants.BfTestConstants;
 import com.example.bftest.dao.AnswerDao;
 import com.example.bftest.dao.ExamDao;
 import com.example.bftest.dao.QuestionDao;
+import com.example.bftest.dto.BfAnswerDto;
 import com.example.bftest.pojo.BfAnswer;
 import com.example.bftest.pojo.BfExam;
 import com.example.bftest.pojo.BfQuestion;
@@ -11,6 +12,7 @@ import com.example.bftest.response.GetNewExamResponse;
 import com.example.bftest.service.ExamService;
 import com.example.bftest.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -70,8 +72,16 @@ public class ExamServiceImpl implements ExamService {
         if (CollectionUtils.isEmpty(bfAnswerList) || bfAnswerList.size() < 10) {
             throw new RuntimeException("题目获取出错");
         }
+        Map<Long, String> c = questionIds.stream().collect(Collectors.toMap(BfQuestion::getId, bfQuestion -> bfQuestion.getQuestion()));
+        List<BfAnswerDto> bfAnswerDtoList=new ArrayList<>();
+        for (BfAnswer bfAnswer : bfAnswerList) {
+            BfAnswerDto bfAnswerDto=new BfAnswerDto();
+            BeanUtils.copyProperties(bfAnswer,bfAnswerDto);
+            bfAnswerDto.setQuestion(c.get(bfAnswerDto.getQuestionId()));
+            bfAnswerDtoList.add(bfAnswerDto);
+        }
         GetNewExamResponse response = new GetNewExamResponse();
-        response.setBfAnswerList(bfAnswerList);
+        response.setBfAnswerDtos(bfAnswerDtoList);
         return response;
     }
 

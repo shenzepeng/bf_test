@@ -1,5 +1,6 @@
 package com.example.bftest.response;
 
+import com.example.bftest.dto.BfAnswerDto;
 import com.example.bftest.pojo.BfAnswer;
 import lombok.Data;
 
@@ -12,5 +13,5 @@ import java.util.List;
  */
 @Data
 public class GetNewExamResponse {
-    private List<BfAnswer> bfAnswerList;
+    private List<BfAnswerDto> bfAnswerDtos;
 }
