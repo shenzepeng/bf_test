@@ -1,17 +1,14 @@
 package com.example.bftest.controller;
 
 import com.example.bftest.common.SzpJsonResult;
-import com.example.bftest.dto.StudentGradeDto;
-import com.example.bftest.response.GetAllFinishResponse;
-import com.example.bftest.response.GetQuestionListResponse;
+import com.example.bftest.response.GetNewExamResponse;
+import com.example.bftest.service.ExamService;
 import com.example.bftest.service.StudentService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * @Auther: mbp
@@ -23,13 +20,22 @@ import java.util.List;
 public class TestController {
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    private ExamService examService;
     /**
      * 参加考试
      * 获取试题
+     * @return
      */
-    @ApiOperation("参加考试,获取试题")
+    @ApiOperation("拿到所有做过的题")
     @GetMapping("get/userId")
-    public SzpJsonResult<GetAllFinishResponse> getTest(Long userId){
+    public SzpJsonResult getTest(Long userId){
         return SzpJsonResult.ok(studentService.getList(userId));
+    }
+    @ApiOperation("获取新的题目")
+    @GetMapping("find/exam/info")
+    public SzpJsonResult<GetNewExamResponse> findExamInfo(Long userId){
+        return SzpJsonResult.ok(examService.getExamByUserId(userId));
     }
 }

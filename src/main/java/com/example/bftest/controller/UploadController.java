@@ -10,6 +10,7 @@ import com.example.bftest.service.QuestionService;
 import com.example.bftest.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +46,7 @@ public class UploadController {
     /**
      * 上传老师名单
      */
+
     @ApiOperation("上传老师名单")
     @PostMapping("teacher/list")
     public SzpJsonResult<IntegerResultResponse> uploadTeacherList(MultipartFile file) {

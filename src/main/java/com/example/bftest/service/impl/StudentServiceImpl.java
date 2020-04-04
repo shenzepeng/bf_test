@@ -9,6 +9,8 @@ import com.example.bftest.pojo.BfExam;
 import com.example.bftest.response.GetAllFinishResponse;
 import com.example.bftest.response.GetThisExamResponse;
 import com.example.bftest.service.StudentService;
+import com.example.bftest.utils.JsonUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
  * @Date: 2020/4/1 23:03
  * @Description: 写点注释
  */
+@Slf4j
 @Service
 public class StudentServiceImpl implements StudentService {
     @Autowired
@@ -38,9 +41,10 @@ public class StudentServiceImpl implements StudentService {
                 .stream()
                 .map(t -> t.getId())
                 .collect(Collectors.toList());
+
         //当前做过的所有试题
         List<BfAnswer> answerByTestId = answerDao.findAnswerByTestId(collect);
-
+        log.info("collect-{},answerByTestId-{}", JsonUtils.objectToJson(collect),JsonUtils.objectToJson(answerByTestId));
         List<StudentGradeDto> studentList = answerByTestId.stream().map(new Function<BfAnswer, StudentGradeDto>() {
             @Override
             public StudentGradeDto apply(BfAnswer bfAnswer) {
@@ -65,6 +69,7 @@ public class StudentServiceImpl implements StudentService {
             }
         }).collect(Collectors.toList());
         response.setStudentGradeDtoList(studentList);
+        log.info("test-response-{}",JsonUtils.objectToJson(response));
         return response;
     }
 
