@@ -42,13 +42,25 @@ public class ExamServiceImpl implements ExamService {
     public GetNewExamResponse getExamByUserId(Long userId) {
         //1 先看该学生是否有没做完的题,或者未批改的题,存在没有做的的题返回异常
         List<BfAnswer> answerByUserId = answerDao.findAnswerByUserId(userId);
-        Integer size = answerByUserId.stream()
+        List<BfAnswer> bfList = answerByUserId.stream()
                 .filter(t -> !StringUtils.isEmpty(t.getUserAnswer()))
                 .filter(t -> t.getGrades() != null)
-                .collect(Collectors.toList())
-                .size();
-        if (size != answerByUserId.size()) {
-            throw new RuntimeException("该学生有没做完的题,或者未批改的题，完成后才能获取新的题目");
+                .collect(Collectors.toList());
+        if (bfList.size() != answerByUserId.size()) {
+            //throw new RuntimeException("该学生有没做完的题,或者未批改的题，完成后才能获取新的题目");
+            List<BfAnswer> blist = answerByUserId.stream().filter(t -> StringUtils.isEmpty(t.getUserAnswer())).collect(Collectors.toList());
+            List<BfQuestion> allBfQuestion = questionDao.findAll();
+            Map<Long, String> collect123 = allBfQuestion.stream().collect(Collectors.toMap(BfQuestion::getId, bfQuestion -> bfQuestion.getQuestion()));
+            List<BfAnswerDto> bfAnswerDtoList=new ArrayList<>();
+            for (BfAnswer bfAnswer : blist) {
+                BfAnswerDto bfAnswerDto=new BfAnswerDto();
+                BeanUtils.copyProperties(bfAnswer,bfAnswerDto);
+                bfAnswerDto.setQuestion(collect123.get(bfAnswerDto.getQuestionId()));
+                bfAnswerDtoList.add(bfAnswerDto);
+            }
+            GetNewExamResponse response = new GetNewExamResponse();
+            response.setBfAnswerDtos(bfAnswerDtoList);
+            return response;
         }
         //2.如果没有则课获取新的题
         //3.优先不获取之前做过的题
@@ -84,6 +96,8 @@ public class ExamServiceImpl implements ExamService {
         response.setBfAnswerDtos(bfAnswerDtoList);
         return response;
     }
+
+
 
     //获取10到新题
     private List<BfQuestion> getQuestionIds() {
